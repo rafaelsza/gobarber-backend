@@ -11,22 +11,25 @@ interface IRequestDTO {
 }
 
 class CreateAppointmentService {
-  constructor(private appointmentsRepository: IAppoitmentsRepository) {
+  constructor(private appointmentsRepository: IAppoitmentsRepository) {}
 
-  }
-
-  public async execute({ date, provider_id }: IRequestDTO): Promise<Appointment> {
+  public async execute({
+    date,
+    provider_id,
+  }: IRequestDTO): Promise<Appointment> {
     const appointmentDate = startOfHour(date);
 
-    const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(appointmentDate);
+    const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
+      appointmentDate,
+    );
 
-    if(findAppointmentInSameDate){
+    if (findAppointmentInSameDate) {
       throw new AppError('This appointment is already booked!');
     }
 
     const appointment = await this.appointmentsRepository.create({
       provider_id,
-      date: appointmentDate
+      date: appointmentDate,
     });
 
     return appointment;
