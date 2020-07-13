@@ -1,24 +1,12 @@
 import { Router } from 'express';
 
-import AuthenticationUserService from '@modules/users/services/AuthenticationUserService';
+import SessionsController from '../controllers/SessionsController';
 
 const usersRouter = Router();
+const sessionsController = new SessionsController();
 
 // DTO - Data Transfer Object
 
-usersRouter.post('/', async (request, response) => {
-  const { email, password } = request.body;
-
-  const authenticationUserService = new AuthenticationUserService();
-
-  const { user, token } = await authenticationUserService.execute({
-    email,
-    password
-  });
-
-  delete user.password;
-
-  return response.json({ user, token });
-});
+usersRouter.post('/', sessionsController.create);
 
 export default usersRouter;
