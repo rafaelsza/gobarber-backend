@@ -2,11 +2,11 @@ import { Router } from 'express';
 
 import SessionsController from '../controllers/SessionsController';
 
-const usersRouter = Router();
+const sessionsRouter = Router();
 const sessionsController = new SessionsController();
 
 // DTO - Data Transfer Object
 
-usersRouter.post('/', sessionsController.create);
+sessionsRouter.post('/', sessionsController.create);
 
-export default usersRouter;
+export default sessionsRouter;

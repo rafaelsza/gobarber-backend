@@ -15,7 +15,7 @@ interface IRequestDTO {
 }
 
 @injectable()
-class AuthenticatorUserService {
+class AuthenticationUserService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
@@ -52,4 +52,4 @@ class AuthenticatorUserService {
   }
 }
 
-export default AuthenticatorUserService;
+export default AuthenticationUserService;
