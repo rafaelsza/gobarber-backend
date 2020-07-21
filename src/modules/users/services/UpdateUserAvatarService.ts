@@ -7,7 +7,7 @@ import IUsersRepository from '../repositories/IUsersRepository';
 
 import User from '../infra/typeorm/entities/User';
 
-interface AvatarDTO {
+interface IAvatarDTO {
   user_id: string;
   avatar_filename: string;
 }
@@ -22,7 +22,10 @@ class UpdateUserAvatarService {
     private storageProvider: IStorageProvider,
   ) {}
 
-  public async execute({ user_id, avatar_filename }: AvatarDTO): Promise<User> {
+  public async execute({
+    user_id,
+    avatar_filename,
+  }: IAvatarDTO): Promise<User> {
     const user = await this.usersRepository.findById(user_id);
 
     if (!user) {
