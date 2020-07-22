@@ -7,15 +7,13 @@ import AppointmentsController from '../controllers/AppointmentsController';
 const appointmentsRouter = Router();
 const appointmentsController = new AppointmentsController();
 
-// DTO - Data Transfer Object
-
 appointmentsRouter.use(ensureAuthenticated);
 
-appointmentsRouter.get('/', async (request, response) => {
+/* appointmentsRouter.get('/', async (request, response) => {
   const appointments = await appointmentsRepository.find();
 
   return response.json(appointments);
-});
+}); */
 
 appointmentsRouter.post('/', appointmentsController.create);
 
