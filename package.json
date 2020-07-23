@@ -12,6 +12,7 @@
     "eslint:errors": "eslint --fix src --ext ts,tsx"
   },
   "dependencies": {
+    "aws-sdk": "^2.718.0",
     "bcryptjs": "^2.4.3",
     "celebrate": "^12.1.2",
     "class-transformer": "^0.2.3",
